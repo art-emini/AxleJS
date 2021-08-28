@@ -10,14 +10,15 @@ Fetch, supercharged.
 ## Features
 
 1. All HTTP Restful Methods.
-2. Fast and easy to use.
-3. Makes fetch easier to use.
-4. Asynchronous.
-5. Error handling.
-6. Adds cancellation to fetch api.
-7. Custom Response and Request classes.
-8. Written in TypeScript.
-9. Built-in TypeDefs.
+2. Very small, 9KB Minified and 15KB Unminified.
+3. Fast and easy to use.
+4. Makes fetch easier to use.
+5. Asynchronous.
+6. Error handling.
+7. Adds cancellation to fetch api.
+8. Custom Response and Request classes.
+9. Written in TypeScript.
+10. Built-in TypeDefs.
 
 ## How to Download
 
