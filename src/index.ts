@@ -1,9 +1,16 @@
 import deleteReq from './core/delete';
 import get from './core/get';
+import head from './core/head';
 import patch from './core/patch';
 import post from './core/post';
 import put from './core/put';
+import use from './core/use';
+import useOptions from './core/useOptions';
+import cors from './middleware/cors';
+import kneepads from './middleware/kneepads';
+import timeTook from './middleware/timeTook';
 import AxleCancelMark from './models/cancelMark';
+import AxleRequest from './models/request';
 import AxleResponse from './models/response';
 
 export namespace AxleTypes {
@@ -24,6 +31,7 @@ export namespace AxleTypes {
 		credentials?: RequestCredentials;
 		headers?: AxleHeaders;
 		redirect?: 'manual' | 'follow' | 'error';
+		referrer?: string;
 		referrerPolicy?:
 			| 'no-referrer'
 			| 'no-referrer-when-downgrade'
@@ -33,12 +41,25 @@ export namespace AxleTypes {
 			| 'strict-origin'
 			| 'strict-origin-when-cross-origin'
 			| 'unsafe-url';
-		body?: string;
+		body?: string | FormData;
 		keepalive?: boolean;
 		signal?: AbortSignal | null;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		window?: any;
 		integrity?: string;
+		handleStatus?: (status: number, statusMessage: string) => boolean;
+	}
+
+	export type AxleMiddleware = (
+		req: AxleRequest,
+		res: AxleResponse
+	) => unknown;
+
+	export interface AxleError {
+		status: number;
+		message: string;
+		response: AxleResponse;
+		request: AxleRequest;
 	}
 }
 
@@ -48,10 +69,20 @@ const Axle = {
 	delete: deleteReq,
 	put: put,
 	patch: patch,
-	all: (promises: Promise<AxleResponse | undefined>[]) => {
+	head: head,
+	all: (promises: Promise<AxleResponse>[]) => {
 		return Promise.all(promises);
 	},
 	cancelMark: AxleCancelMark,
+	use: use,
+	useOptions: useOptions,
+	middleware: {
+		timeTook: timeTook,
+	},
+	middlewareOptions: {
+		cors: cors,
+		kneepads: kneepads,
+	},
 };
 
 export default Axle;

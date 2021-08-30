@@ -3,15 +3,14 @@ export default function handleStatus(
 	status: number,
 	statusMessage?: string
 ) {
+	// throw error if status is 400+
+	// returns error message if true, returns false if false
 	if (status >= 400) {
 		if (statusMessage) {
-			console.error(
-				`${method.toUpperCase()}: Fetch return with error code ${status}. Status Message: "${statusMessage}"`
-			);
+			return `${method.toUpperCase()}: Fetch returned with error code ${status}. Status Message: "${statusMessage}"`;
 		} else {
-			console.error(`Fetch return with error ${status}`);
+			return `Fetch returned with error ${status}`;
 		}
-		return true;
 	} else {
 		return false;
 	}
