@@ -15,15 +15,16 @@ AxleJS supercharges fetch, with better error handling, easier to use options, ca
 
 ## Features
 
-1. All HTTP Restful Methods.
-2. Fast and easy to use.
-3. Makes fetch easier to use.
-4. Asynchronous.
-5. Error handling.
-6. Adds cancellation to fetch api.
-7. Custom Response and Request classes.
-8. Written in TypeScript.
-9. Built-in TypeDefs.
+1. Functions for all HTTP Restful Methods.
+2. Use built-in middleware or make custom middleware.
+3. Very small, ~10KB Minified and ~17KB Unminified.
+4. Fast and easy to use.
+5. Makes fetch easier to use.
+6. Better Error handling.
+7. Adds cancellation to fetch api.
+8. Custom and Extended Response and Request classes.
+9. Written in TypeScript.
+10. Built-in TypeDefs.
 
 ## How to Download
 

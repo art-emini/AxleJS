@@ -3,7 +3,12 @@ import get from './core/get';
 import patch from './core/patch';
 import post from './core/post';
 import put from './core/put';
+import use from './core/use';
+import useOptions from './core/useOptions';
+import cors from './middleware/cors';
+import timeTook from './middleware/timeTook';
 import AxleCancelMark from './models/cancelMark';
+import AxleRequest from './models/request';
 import AxleResponse from './models/response';
 
 export namespace AxleTypes {
@@ -40,6 +45,11 @@ export namespace AxleTypes {
 		window?: any;
 		integrity?: string;
 	}
+
+	export type AxleMiddleware = (
+		req: AxleRequest,
+		res: AxleResponse
+	) => unknown;
 }
 
 const Axle = {
@@ -52,6 +62,14 @@ const Axle = {
 		return Promise.all(promises);
 	},
 	cancelMark: AxleCancelMark,
+	use: use,
+	useOptions: useOptions,
+	middleware: {
+		timeTook: timeTook,
+	},
+	middlewareOptions: {
+		cors: cors,
+	},
 };
 
 export default Axle;

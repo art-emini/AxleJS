@@ -1,3 +1,4 @@
+// Class extended from Fetch Headers, has more features to help make headers simpler and easier
 export default class AxleHeaders {
 	private headers: Headers;
 
@@ -103,6 +104,7 @@ export default class AxleHeaders {
 		return [...this.values()];
 	}
 
+	// converts to object
 	public object() {
 		return Object.fromEntries(this.entries);
 	}
