@@ -30,8 +30,8 @@ export default class AxleRequest<t = Record<string, any>> {
 		this.response;
 	}
 
-	// Fetches, returns Promise<AxleResponse | AxleTypes.AxleError>
-	public async run(): Promise<AxleResponse | AxleTypes.AxleError> {
+	// Fetches, returns Promise<AxleResponse>
+	public async run(): Promise<AxleResponse> {
 		// get any middleware options
 
 		// merge into one object

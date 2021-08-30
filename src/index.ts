@@ -70,7 +70,7 @@ const Axle = {
 	put: put,
 	patch: patch,
 	head: head,
-	all: (promises: Promise<AxleResponse | undefined>[]) => {
+	all: (promises: Promise<AxleResponse>[]) => {
 		return Promise.all(promises);
 	},
 	cancelMark: AxleCancelMark,
