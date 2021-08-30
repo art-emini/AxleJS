@@ -27,7 +27,11 @@ export default class AxleResponse {
 		return text;
 	}
 
-	public get body() {
+	public async body() {
+		return (await this.res.body?.getReader().read())?.value;
+	}
+
+	public get bodyReader() {
 		return this.res.body;
 	}
 
