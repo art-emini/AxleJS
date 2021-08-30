@@ -13,17 +13,21 @@ The [Fetch Web API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/U
 
 AxleJS supercharges fetch, with better error handling, easier to use options, can automatically follow redirects, an easier way to manage and view headers and search queries, custom response and request classes and methods, and a lot more.
 
+## [Documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation)
+
 ## Features
 
-1. All HTTP Restful Methods.
-2. Fast and easy to use.
-3. Makes fetch easier to use.
-4. Asynchronous.
-5. Error handling.
-6. Adds cancellation to fetch api.
-7. Custom Response and Request classes.
-8. Written in TypeScript.
-9. Built-in TypeDefs.
+1. Functions for all HTTP Restful Methods.
+2. Use built-in middleware or make custom middleware.
+3. Very small, ~10KB Minified and ~17KB Unminified.
+4. Fast and easy to use.
+5. [Documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
+6. Makes fetch easier to use.
+7. Better Error handling.
+8. Adds cancellation to fetch api.
+9. Custom and Extended Response and Request classes.
+10. Written in TypeScript.
+11. Built-in TypeDefs.
 
 ## How to Download
 
@@ -32,18 +36,18 @@ AxleJS supercharges fetch, with better error handling, easier to use options, ca
 1. Download the [latest release](https://github.com/ksplatdev/AxleJS/releases/latest) from GitHub.
 2. Unzip and move contents into your project.
 3. Import AxleJS with the [ES6 Import Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
-4. Read the documentation.
+4. Read the [documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
 
 ### NPM
 
 1. Run `npm i axlejs`.
 2. Import AxleJS with the [ES6 Import Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
-3. Read the documentation.
+3. Read the [documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
 
 ### CDN
 
-1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.0.0/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.0.0/dist/index.min.js>.
-2. Read the documentation.
+1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.1.0/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.1.0/dist/index.min.js>.
+2. Read the [documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
 
 ## Quick Start
 
@@ -174,8 +178,9 @@ For more info, read the documentation.
 9. Test your changes on codesandbox or any other platform.
 10. Stage, Commit, and Push your changes on your branch.
 11. Create a pull request to merge onto the staging branch.
-12. Wait for your pull request to be reviewed and possibly merged.
-13. Thanks for contributing!
+12. State all changes as a changelog in the pull request.
+13. Wait for your pull request to be reviewed and possibly merged.
+14. Thanks for contributing!
 
 ### File Structure
 

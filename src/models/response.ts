@@ -4,11 +4,16 @@ import getQuery from '../utils/getQuery';
 import queryParam from '../utils/queryParam';
 import AxleHeaders from './headers';
 
+// custom, extended Response class, extended from Fetch Response
 export default class AxleResponse {
 	private res: Response;
+	private timeStart: number;
+	private timeEnd: number;
 
-	constructor(res: Response) {
+	constructor(res: Response, timeStart: number, timeEnd: number) {
 		this.res = res;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
 	}
 
 	public async json<t = Record<string, unknown>>(): Promise<t> {
@@ -22,7 +27,11 @@ export default class AxleResponse {
 		return text;
 	}
 
-	public get body() {
+	public async body() {
+		return (await this.res.body?.getReader().read())?.value;
+	}
+
+	public get bodyReader() {
 		return this.res.body;
 	}
 
@@ -40,6 +49,7 @@ export default class AxleResponse {
 		}
 	}
 
+	// automatically redirect
 	public finishRedirect() {
 		if (this.res.headers.has('Location')) {
 			const url = this.res.headers.get('Location');
@@ -87,6 +97,10 @@ export default class AxleResponse {
 
 	public get headers() {
 		return new AxleHeaders(this.res.headers);
+	}
+
+	public get timeTook() {
+		return this.timeEnd - this.timeStart;
 	}
 
 	public get type() {
