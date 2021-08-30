@@ -1,5 +1,6 @@
 import deleteReq from './core/delete';
 import get from './core/get';
+import head from './core/head';
 import patch from './core/patch';
 import post from './core/post';
 import put from './core/put';
@@ -60,6 +61,7 @@ const Axle = {
 	delete: deleteReq,
 	put: put,
 	patch: patch,
+	head: head,
 	all: (promises: Promise<AxleResponse | undefined>[]) => {
 		return Promise.all(promises);
 	},
