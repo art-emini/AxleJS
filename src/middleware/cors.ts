@@ -3,6 +3,5 @@ export default function cors() {
 	return {
 		mode: 'cors',
 		cache: 'default',
-		credentials: 'omit',
 	};
 }

@@ -2,7 +2,7 @@ import { AxleTypes } from '../index';
 import AxleRequest from '../models/request';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function deleteReq<t = Record<string, any>>(
+export default async function deleteReq<t = Record<string, any> | FormData>(
 	url: string,
 	data?: t | undefined | null,
 	options: AxleTypes.AxleOptions = {

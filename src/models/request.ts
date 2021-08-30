@@ -4,13 +4,14 @@ import { __getMiddleware } from '../core/use';
 import { __getMiddlewareOptions } from '../core/useOptions';
 import { AxleTypes } from '../index';
 import handleStatus from '../utils/handleStatus';
+import isJSON from '../utils/isJSON';
 import AxleResponse from './response';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default class AxleRequest<t = Record<string, any>> {
 	public method: string;
 	public url: string;
-	public body: t | undefined | null;
+	public body: t | FormData | undefined | null;
 	public options: AxleTypes.AxleOptions;
 
 	public response: AxleResponse | undefined;
@@ -39,11 +40,21 @@ export default class AxleRequest<t = Record<string, any>> {
 			middlewareOptions = { ...middlewareOptions, ...option };
 		});
 
+		// fetch body
+		let fetchBody: t | FormData | string | undefined | null = this.body;
+
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		if (isJSON(fetchBody as Record<string, any>)) {
+			fetchBody = JSON.stringify(this.body) as string;
+		} else {
+			fetchBody = this.body as FormData;
+		}
+
 		// fetch options
 		const fetchOptions = {
 			...this.options,
 			method: this.method,
-			body: JSON.stringify(this.body),
+			body: fetchBody,
 			...middlewareOptions,
 		};
 
