@@ -109,6 +109,22 @@ export default class AxleHeaders {
 		return Object.fromEntries(this.entries);
 	}
 
+	public is(name: string, value: string) {
+		if (this.has(name)) {
+			return this.get(name) === value;
+		} else {
+			return null;
+		}
+	}
+
+	public includesValue(name: string, value: string) {
+		if (this.has(name)) {
+			return this.get(name)?.includes(value) || false;
+		} else {
+			return null;
+		}
+	}
+
 	public get basic() {
 		return { ...this.headers };
 	}
