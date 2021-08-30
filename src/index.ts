@@ -47,12 +47,20 @@ export namespace AxleTypes {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		window?: any;
 		integrity?: string;
+		handleStatus?: (status: number, statusMessage: string) => boolean;
 	}
 
 	export type AxleMiddleware = (
 		req: AxleRequest,
 		res: AxleResponse
 	) => unknown;
+
+	export interface AxleError {
+		status: number;
+		message: string;
+		response: AxleResponse;
+		request: AxleRequest;
+	}
 }
 
 const Axle = {

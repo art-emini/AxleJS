@@ -14,11 +14,7 @@ export default async function post<t = Record<string, any>>(
 		},
 	}
 ) {
-	try {
-		const req = new AxleRequest('POST', url, data, options);
-		const res = await req.run();
-		return res;
-	} catch (error) {
-		console.error(error);
-	}
+	const req = new AxleRequest('POST', url, data, options);
+	const res = await req.run();
+	return res;
 }

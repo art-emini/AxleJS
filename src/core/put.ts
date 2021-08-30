@@ -14,9 +14,7 @@ export default async function put<t = Record<string, any>>(
 		},
 	}
 ) {
-	try {
-		return new AxleRequest('PUT', url, data, options).response;
-	} catch (error) {
-		console.error(error);
-	}
+	const req = new AxleRequest('PUT', url, data, options);
+	const res = await req.run();
+	return res;
 }

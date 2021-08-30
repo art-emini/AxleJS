@@ -30,8 +30,8 @@ export default class AxleRequest<t = Record<string, any>> {
 		this.response;
 	}
 
-	// Fetches, returns Promise<AxleResponse>
-	public async run() {
+	// Fetches, returns Promise<AxleResponse | AxleTypes.AxleError>
+	public async run(): Promise<AxleResponse | AxleTypes.AxleError> {
 		// get any middleware options
 
 		// merge into one object
@@ -65,25 +65,92 @@ export default class AxleRequest<t = Record<string, any>> {
 
 		const timeEnd = performance.now();
 
-		// check if status is 400+, throws error and rejects promise if so
-		if (handleStatus(this.method, res.status, res.statusText)) {
-			this.response = new AxleResponse(res, timeStart, timeEnd);
+		// validate status
+		// check if user passed in a way to handle statuses
+		if (fetchOptions.handleStatus) {
+			// TRUE = ERROR
+			if (fetchOptions.handleStatus(res.status, res.statusText)) {
+				// check if statusText is empty
+				if (res.statusText.trim() !== '') {
+					this.response = new AxleResponse(res, timeStart, timeEnd);
 
-			// reason is returned from handleStatus if not false
-			Promise.reject(
-				handleStatus(this.method, res.status, res.statusText)
-			);
+					console.error(
+						`${this.method.toUpperCase()}: Fetch returned with error code ${
+							res.status
+						}. Status Message: "${res.statusText}"`
+					);
 
-			return this.response;
+					// reject
+					return Promise.reject({
+						status: res.status,
+						message: `${this.method.toUpperCase()}: Fetch returned with error code ${
+							res.status
+						}. Status Message: "${res.statusText}"`,
+						response: this.response,
+						request: this,
+					});
+				} else {
+					this.response = new AxleResponse(res, timeStart, timeEnd);
+
+					console.error(
+						`${this.method.toUpperCase()}: Fetch returned with error code ${
+							res.status
+						}.`
+					);
+
+					// reject
+					return Promise.reject({
+						status: res.status,
+						message: `${this.method.toUpperCase()}: Fetch returned with error code ${
+							res.status
+						}.`,
+						response: this.response,
+						request: this,
+					});
+				}
+			} else {
+				// NO ERROR
+				// normal w/ user passed status check
+				this.response = new AxleResponse(res, timeStart, timeEnd);
+
+				// run middleware
+				__getMiddleware().forEach((cb) => {
+					cb(this, this.response as AxleResponse);
+				});
+
+				return this.response;
+			}
 		} else {
-			this.response = new AxleResponse(res, timeStart, timeEnd);
+			// check if status is 400+, throws error and rejects promise if so
+			if (handleStatus(this.method, res.status, res.statusText)) {
+				this.response = new AxleResponse(res, timeStart, timeEnd);
 
-			// run middleware
-			__getMiddleware().forEach((cb) => {
-				cb(this, this.response as AxleResponse);
-			});
+				console.error(
+					handleStatus(this.method, res.status, res.statusText)
+				);
 
-			return this.response;
+				// reason is returned from handleStatus if not false
+				return Promise.reject({
+					status: res.status,
+					message: handleStatus(
+						this.method,
+						res.status,
+						res.statusText
+					),
+					response: this.response,
+					request: this,
+				});
+			} else {
+				// normal
+				this.response = new AxleResponse(res, timeStart, timeEnd);
+
+				// run middleware
+				__getMiddleware().forEach((cb) => {
+					cb(this, this.response as AxleResponse);
+				});
+
+				return this.response;
+			}
 		}
 	}
 }

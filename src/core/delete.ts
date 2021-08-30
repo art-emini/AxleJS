@@ -14,11 +14,7 @@ export default async function deleteReq<t = Record<string, any> | FormData>(
 		},
 	}
 ) {
-	try {
-		const req = new AxleRequest('DELETE', url, data, options);
-		const res = await req.run();
-		return res;
-	} catch (error) {
-		console.error(error);
-	}
+	const req = new AxleRequest('DELETE', url, data, options);
+	const res = await req.run();
+	return res;
 }

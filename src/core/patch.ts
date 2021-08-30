@@ -14,11 +14,7 @@ export default async function patch<t = Record<string, any>>(
 		},
 	}
 ) {
-	try {
-		const req = new AxleRequest('PATCH', url, data, options);
-		const res = await req.run();
-		return res;
-	} catch (error) {
-		console.error(error);
-	}
+	const req = new AxleRequest('PATCH', url, data, options);
+	const res = await req.run();
+	return res;
 }

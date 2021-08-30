@@ -8,11 +8,7 @@ export default async function head(
 		cache: 'default',
 	}
 ) {
-	try {
-		const req = new AxleRequest('HEAD', url, undefined, options);
-		const res = await req.run();
-		return res;
-	} catch (error) {
-		console.error(error);
-	}
+	const req = new AxleRequest('HEAD', url, undefined, options);
+	const res = await req.run();
+	return res;
 }
