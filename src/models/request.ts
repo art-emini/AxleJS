@@ -44,7 +44,7 @@ export default class AxleRequest<t = Record<string, any>> {
 		let fetchBody: t | FormData | string | undefined | null = this.body;
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		if (isJSON(fetchBody as Record<string, any>)) {
+		if (isJSON(fetchBody)) {
 			fetchBody = JSON.stringify(this.body) as string;
 		} else {
 			fetchBody = this.body as FormData;

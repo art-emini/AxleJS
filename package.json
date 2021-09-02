@@ -1,6 +1,6 @@
 {
 	"name": "axlejs",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Fetch, supercharged.",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
@@ -9,9 +9,9 @@
 		"build": "sh scripts/build.sh",
 		"bundle": "npx webpack --config webpack.config.js",
 		"format": "npx prettier --config .prettierrc --write \"src/**/*.ts\"",
-		"format:watch": "npx onchange \"src/**/*.ts\" \"*.json\" \"*.md\" \"examples/**/*.ts\" -- prettier --write --ignore-unknown {{changed}}",
+		"format:watch": "npx onchange \"src/**/*.ts\" \"*.json\" \"*.md\" \"examples/**/*.ts\" \"test/**/*.ts\" -- prettier --write --ignore-unknown {{changed}}",
 		"lint": "npx eslint -c .eslintrc.json src/",
-		"lint:watch": "npx onchange \"src/**/*.ts\"  \"examples/**/*.ts\" -- eslint -c .eslintrc.json --fix {{changed}}",
+		"lint:watch": "npx onchange \"src/**/*.ts\"  \"examples/**/*.ts\" \"test/**/*.ts\" -- eslint -c .eslintrc.json --fix {{changed}}",
 		"lint:fix": "npx eslint -c .eslintrc.json --fix src/",
 		"minify": "npx uglifyjs dist/index.js -c -o dist/index.min.js"
 	},
@@ -21,11 +21,13 @@
 	},
 	"keywords": [
 		"fetch",
+		"wrapper",
+		"ts",
 		"request",
 		"api",
 		"client",
 		"fast",
-		"overpowered",
+		"supercharges",
 		"axle"
 	],
 	"author": "Bleart Emini",
@@ -39,7 +41,7 @@
 		"@typescript-eslint/parser": "^4.29.3",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-prettier": "^3.4.1",
+		"eslint-plugin-prettier": "^4.0.0",
 		"onchange": "^7.1.0",
 		"open-cli": "^7.0.0",
 		"prettier": "^2.3.2",

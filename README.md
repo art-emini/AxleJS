@@ -4,6 +4,9 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ksplatdev/AxleJS)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ksplatdev/AxleJS)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ksplatdev/AxleJS/CodeQL)
+![NPM Downloads](https://img.shields.io/npm/dm/axlejs?label=npm%20downloads)
+![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hm/axlejs)
+![Active Development](https://img.shields.io/badge/Maintenance%20Level-Actively%20Developed-brightgreen.svg)
 
 Fetch, supercharged.
 
@@ -46,7 +49,7 @@ AxleJS supercharges fetch, with better error handling, easier to use options, ca
 
 ### CDN
 
-1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.1.0/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.1.0/dist/index.min.js>.
+1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.1.1/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.1.1/dist/index.min.js>.
 2. Read the [documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
 
 ## Quick Start
