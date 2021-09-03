@@ -5,7 +5,7 @@ import AxleResponse from '../models/response';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function put<t = Record<string, any>>(
 	url: string,
-	data?: t | undefined | null,
+	data?: t | FormData | undefined | null,
 	options: AxleTypes.AxleOptions = {
 		mode: 'cors',
 		cache: 'default',

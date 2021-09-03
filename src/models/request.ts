@@ -19,7 +19,7 @@ export default class AxleRequest<t = Record<string, any>> {
 	constructor(
 		method: string,
 		url: string,
-		body: t | undefined | null,
+		body: t | FormData | undefined | null,
 		options: AxleTypes.AxleOptions
 	) {
 		this.method = method.toUpperCase();
