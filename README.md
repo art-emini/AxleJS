@@ -14,7 +14,7 @@ Fetch, supercharged.
 
 The [Fetch Web API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) is great, but it could be better.
 
-AxleJS supercharges fetch, with better error handling, easier to use options, can automatically follow redirects, an easier way to manage and view headers and search queries, custom response and request classes and methods, and a lot more.
+AxleJS supercharges fetch, with better error handling, using custom and built-in middleware and options, an easier way to manage and view headers and search queries, custom response and request classes and methods, and a lot more.
 
 ## [Documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation)
 
@@ -49,7 +49,7 @@ AxleJS supercharges fetch, with better error handling, easier to use options, ca
 
 ### CDN
 
-1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.1.1/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.1.1/dist/index.min.js>.
+1. Import from <https://cdn.jsdelivr.net/npm/axlejs@1.2.0/dist/index.js> or for minified version <https://cdn.jsdelivr.net/npm/axlejs@1.2.0/dist/index.min.js>.
 2. Read the [documentation](https://github.com/ksplatdev/AxleJS/wiki/Documenation).
 
 ## Quick Start

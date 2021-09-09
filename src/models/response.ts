@@ -1,5 +1,6 @@
 // Class for converting Response to AxleResponse to supercharge fetch!
 
+import { __getInjectedData } from '../core/inject';
 import getQuery from '../utils/getQuery';
 import queryParam from '../utils/queryParam';
 import AxleHeaders from './headers';
@@ -16,8 +17,20 @@ export default class AxleResponse {
 		this.timeEnd = timeEnd;
 	}
 
-	public async json<t = Record<string, unknown>>(): Promise<t> {
-		const json = await this.res.json();
+	public async json<t = Record<string, unknown>>() {
+		let json: t = await this.res.json();
+
+		// get injected data
+
+		const injectedData = __getInjectedData();
+
+		// add injected data
+		injectedData.forEach((data) => {
+			json = {
+				...json,
+				...data,
+			};
+		});
 
 		return json;
 	}

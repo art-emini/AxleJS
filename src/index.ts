@@ -1,6 +1,7 @@
 import deleteReq from './core/delete';
 import get from './core/get';
 import head from './core/head';
+import inject from './core/inject';
 import patch from './core/patch';
 import post from './core/post';
 import put from './core/put';
@@ -76,6 +77,7 @@ const Axle = {
 	cancelMark: AxleCancelMark,
 	use: use,
 	useOptions: useOptions,
+	inject: inject,
 	middleware: {
 		timeTook: timeTook,
 	},
